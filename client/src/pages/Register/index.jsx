@@ -1,7 +1,9 @@
 import React from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import Divider from "../../components/Divider";
 import { Link } from "react-router-dom";
+import { RegisterUser } from "../../apiCalls/user";
+import { useNavigate } from 'react-router-dom';
 
 const rules = [
   {
@@ -10,8 +12,19 @@ const rules = [
   },
 ];
 const Register = () => {
-  const handleSubmit = (values) => {
-    console.log("Sucess", values);
+  const navigate = useNavigate();
+  const handleSubmit = async(values) => {
+    try {
+      const response = await RegisterUser(values);
+      if(response.success){
+        message.success(response.message);
+        navigate('/login');
+      }else{
+        throw new Error(response.message)
+      }
+    } catch (error) {
+      message.error(error.message)
+    }
   };
   return (
 

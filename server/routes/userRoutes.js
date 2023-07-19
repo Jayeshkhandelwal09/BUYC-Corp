@@ -13,7 +13,7 @@ const userRoutes = express.Router()
 userRoutes.post("/register" , async(req,res)=>{
     try {
         // Check if user Already exist
-        const user = await User.findone({email:req.body.email});
+        const user = await User.findOne({email:req.body.email});
         if(user){
             return res.send({
                 success : false,
@@ -46,7 +46,7 @@ userRoutes.post("/register" , async(req,res)=>{
 
 userRoutes.post("/login" , async (req,res)=>{
     try {
-        const user = await User.findone({email:req.body.email});
+        const user = await User.findOne({email:req.body.email});
         if(!user){
             return res.send({
                 success : false,
