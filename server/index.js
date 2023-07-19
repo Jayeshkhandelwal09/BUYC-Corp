@@ -4,13 +4,14 @@ const {connection} = require("./db")
 const {userRoutes} = require("./routes/userRoutes")
 const app = express()
 const cors = require('cors');
+app.use(cors());
 const { oemRouter } = require("./routes/oemRoutes")
 const { InventoryRouter } = require("./routes/inventoryRoutes")
 app.use("/",userRoutes)
 app.use("/",oemRouter)
 app.use("/",InventoryRouter)
 app.use(express.json())
-app.use(cors());
+
 
 
 const port = process.env.port
