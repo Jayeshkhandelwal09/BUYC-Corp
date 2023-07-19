@@ -10,7 +10,7 @@ const InventoryModelSchema = new mongoose.Schema({
   accidents: { type: Number, required: true },
   previousBuyers: { type: Number, required: true },
   registrationPlace: { type: String, required: true },
-  oemId: { type: mongoose.Schema.Types.ObjectId, ref: OEMspecsModel },
+  oemspecsId: { type: mongoose.Schema.Types.ObjectId, ref: OEMspecsModel },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: User },
   image: { type: String, required: true },
   title: { type: String, required: true },

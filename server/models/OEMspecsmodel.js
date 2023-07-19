@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const OEMspecsModelSchema = mongoose.Schema({
-  nameOfModel: { required: true, type: String },
-  yearOfModel: { required: true, type: String },
+  nameOfmodel: { required: true, type: String },
+  yearOfmodel: { required: true, type: String },
   newPriceOfVehicle: { required: true, type: Number },
   colors: { required: true, type: Array },
   mileage: { required: true, type: Number },

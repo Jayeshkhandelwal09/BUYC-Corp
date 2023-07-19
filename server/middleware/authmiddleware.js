@@ -5,7 +5,7 @@ const auth = (req, res, next) => {
     // Getting token from header
     const token = req.header("authorization").split(" ")[1];
     const decryptedToken = jwt.verify(token, process.env.secretKey);
-    req.body.userId = decryptedToken.userId;
+    req.body.userId = decryptedToken.id;
     next();
   } catch (error) {
     res.send({
