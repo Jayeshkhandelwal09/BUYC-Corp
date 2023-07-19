@@ -6,6 +6,8 @@ const bcrpyt = require("bcrypt");
 
 const jwt = require("jsonwebtoken");
 
+const { auth } = require("../middleware/authmiddleware");
+
 const userRoutes = express.Router()
 
 // New User Registration
@@ -77,6 +79,22 @@ userRoutes.post("/login" , async (req,res)=>{
         res.send({
             success : false,
             message : error.message
+        })
+    }
+})
+
+userRoutes.get("/current-user" , auth , async(req,res)=>{
+    try {
+        const user = await User.findById(req.body.userId);
+        res.send({
+            success:true,
+            messgae:"User Fetched Successfully",
+            data:user
+        })
+    } catch (error) {
+        res.send({
+            success:false,
+            messgae:error.message
         })
     }
 })
